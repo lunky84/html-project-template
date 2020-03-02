@@ -1,0 +1,28 @@
+{
+  "name": "mulipage_project_template",
+  "version": "1.0.0",
+  "description": "Simple template for developing frontend prototypes. Live browser reloading, ES6 transpiling and minify, SASS compile and minify, Nunjucks templating engine",
+  "main": "index.js",
+  "scripts": {
+    "server": "gulp default"
+  },
+  "author": "John Downie",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.8.6",
+    "@babel/preset-env": "^7.8.6",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-nodemon": "^2.4.2",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.2"
+  },
+  "dependencies": {
+    "babel": "^6.23.0",
+    "browser-sync": "^2.26.7",
+    "express": "^4.17.1",
+    "nunjucks": "^3.2.0"
+  }
+}

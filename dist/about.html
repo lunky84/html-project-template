@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>About</h1>
+
+    {% set items = [
+        { title: "Title 1", id: 1 },
+        { title: "Title 2", id: 2}]
+    %}
+
+    <h1>Posts</h1>
+    <ul>
+    {% for item in items %}
+    <li>{{ item.title }}</li>
+    {% else %}
+    <li>This would display if the 'item' collection were empty</li>
+    {% endfor %}
+    </ul>
+
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
