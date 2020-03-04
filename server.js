@@ -2,11 +2,11 @@ const express = require('express')
 const nunjucks = require('nunjucks')
 const app = express()
 
-nunjucks.configure('dist', {
+nunjucks.configure('views', {
     express: app
 })
 
-app.use(express.static('dist'))
+app.use(express.static('build'))
 
 // Set views engine
 app.set('view engine', 'html')

@@ -4,6 +4,7 @@ const uglify = require('gulp-uglify');
 const sass = require('gulp-sass');
 const concat = require('gulp-concat');
 const babel = require('gulp-babel');
+const sourcemaps = require('gulp-sourcemaps');
 const nodemon = require('gulp-nodemon');
 var browserSync = require('browser-sync').create();
 
@@ -28,23 +29,23 @@ gulp.task('sync', function() {
     gulp.watch('src/js/*.js', gulp.series('scripts'));
     gulp.watch('src/images/*', gulp.series('imageMin'));
     gulp.watch('src/sass/*.scss', gulp.series('sass'));
-    gulp.watch('src/views/*.html', gulp.series('copyHtml'));
-    gulp.watch(['dist/js/*.js', 'dist/*.html', 'dist/css/*.css']).on("change", browserSync.reload);
+    // gulp.watch('views/*.html', gulp.series('copyHtml'));
+    gulp.watch(['views/*.html', 'build/js/*.js', 'build/*.html', 'build/css/*.css']).on("change", browserSync.reload);
   });
 
 // Copy all HTML files
 
-gulp.task('copyHtml', () =>
-    gulp.src('src/views/*.html')
-    .pipe(gulp.dest('dist'))
-);
+// gulp.task('copyHtml', () =>
+//     gulp.src('src/views/*.html')
+//     .pipe(gulp.dest('build'))
+// );
 
 // Otimise Images
 
 gulp.task('imageMin', () =>
     gulp.src('src/images/*')
     .pipe(imagemin())
-    .pipe(gulp.dest('dist/images'))
+    .pipe(gulp.dest('build/images'))
 );
 
 // Compile SASS
@@ -52,20 +53,20 @@ gulp.task('imageMin', () =>
 gulp.task('sass', () =>
     gulp.src('src/sass/*.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('dist/css'))
+    .pipe(gulp.dest('build/css'))
 );
 
 // Merge and Minify JS
 
 gulp.task('scripts', () =>
-    gulp.src('src/js/*.js')
+    gulp.src(['bower_components/jquery/dist/jquery.js', 'src/js/*.js'])
     .pipe(babel({
         presets: ['@babel/env']
     }))
     .pipe(concat('main.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('dist/js'))
+    .pipe(gulp.dest('build/js'))
 );
 
-gulp.task('build',gulp.parallel(['copyHtml','imageMin', 'sass', 'scripts']));
+gulp.task('build',gulp.parallel(['imageMin', 'sass', 'scripts']));
 gulp.task('default',gulp.parallel(['start', 'sync']));

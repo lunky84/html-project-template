@@ -1,6 +1,6 @@
 
-console.log('this file 1');
+$('.test').html("jquery is working");
 
-let variable = 564;
+let variable = "that ES6 is transpiled";
 
-console.log(`The variable is set to ${variable}`);
+console.log(`The test: ${variable}`);
