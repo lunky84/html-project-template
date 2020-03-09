@@ -30,7 +30,7 @@ gulp.task('sync', function() {
     gulp.watch('src/images/*', gulp.series('imageMin'));
     gulp.watch('src/sass/*.scss', gulp.series('sass'));
     // gulp.watch('views/*.html', gulp.series('copyHtml'));
-    gulp.watch(['views/*.html', 'build/js/*.js', 'build/*.html', 'build/css/*.css']).on("change", browserSync.reload);
+    gulp.watch(['views/**/*.html', 'build/js/*.js', 'build/css/*.css']).on("change", browserSync.reload);
   });
 
 // Copy all HTML files
