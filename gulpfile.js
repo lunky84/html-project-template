@@ -59,7 +59,10 @@ gulp.task('sass', () =>
 // Merge and Minify JS
 
 gulp.task('scripts', () =>
-    gulp.src(['bower_components/jquery/dist/jquery.js', 'src/js/*.js'])
+    gulp.src([
+        'node_modules/jquery/dist/jquery.js',
+        'src/js/*.js'
+    ])
     .pipe(babel({
         presets: ['@babel/env']
     }))
